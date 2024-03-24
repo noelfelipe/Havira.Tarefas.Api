@@ -30,6 +30,8 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 ### Passos
 
+###Recomendado a utilização de IDE Visual Studio
+
 1. Clone o repositório:
    ```
    git clone https://github.com/noelfelipe/Havira.Tarefas.Api.git
@@ -46,8 +48,6 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 5. Aplique a criação de tabelas Script na pasta: 
    ``` Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate ```
-
-
 6. Execute a aplicação:
    ```
    dotnet run
