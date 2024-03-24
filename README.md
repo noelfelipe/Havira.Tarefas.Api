@@ -44,8 +44,11 @@ Para executar o projeto localmente, siga os passos abaixo:
    ```
 4. Configure a string de conexão no arquivo `appsettings.json` para apontar para o seu SQL Server.
 
-5. Aplique a criação de tabelas Script na pasta: Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate
+5. Aplique a criação de tabelas Script na pasta: 
    ```
+ Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate
+   ```
+
 6. Execute a aplicação:
    ```
    dotnet run
@@ -58,7 +61,7 @@ Após iniciar a aplicação, você pode usar as seguintes rotas para interagir c
 - `POST /api/Usuarios/register`: registra um novo usuário.
 - `POST /api/Usuarios/login`: autentica um usuário.
 
-# Para Utilização do endpoint abaixo é necessario um usuario registrado com os endpoint acima e utilizar o bearer token gerado no endpoint de login
+### Para Utilização do endpoint abaixo é necessario um usuario registrado com os endpoint acima e utilizar o bearer token gerado no endpoint de login
 
 - `POST /api/Todos`: cria uma nova tarefa.
 - `GET /api/Todos`: lista todas as tarefas do usuário autenticado.
