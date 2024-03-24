@@ -34,30 +34,12 @@ namespace Havira.Tarefas.Api.Controllers
                 }
 
                 var usuario = await _usuarioService.CreateUsuarioAsync(usuarioDto);
-                return CreatedAtAction(nameof(GetUsuarioById), new { id = usuario.Id }, usuario);
+                return CreatedAtAction(nameof(Register), new { email = usuario.Email }, usuarioDto.Email);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-        }
-
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetUsuarioById(Guid id)
-        {
-            try
-            {
-                var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
-                if (usuario == null) return NotFound();
-                return Ok(usuario);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
         }
 
         [HttpPost("login")]

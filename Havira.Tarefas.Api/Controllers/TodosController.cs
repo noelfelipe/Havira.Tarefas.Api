@@ -38,6 +38,7 @@ namespace Havira.Tarefas.Api.Controllers
                 }
 
                 var todo = await _todoService.CreateTodoAsync(todoCreateDto, userId);
+
                 return CreatedAtAction(nameof(GetById), new { id = todo.Id }, todo);
             }
             catch (Exception ex)

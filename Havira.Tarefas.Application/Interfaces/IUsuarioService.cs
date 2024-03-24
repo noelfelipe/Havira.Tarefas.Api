@@ -6,7 +6,6 @@ namespace Havira.Tarefas.Application.Interfaces
     public interface IUsuarioService
     {
         Task<Usuario> CreateUsuarioAsync(UserCreateDto usuarioDto);
-        Task<Usuario> GetUsuarioByIdAsync(Guid id);
         Task<Usuario> GetUsuarioByEmailAsync(string email);
         bool VerifyPassword(string password, string hashedPassword);
     }

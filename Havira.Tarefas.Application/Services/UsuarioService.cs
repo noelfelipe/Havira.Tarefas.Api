@@ -36,11 +36,6 @@ namespace Havira.Tarefas.Application.Services
             return usuario;
         }
 
-        public async Task<Usuario> GetUsuarioByIdAsync(Guid id)
-        {
-            return await _usuarioRepository.GetByIdAsync(id);
-        }
-
         public async Task<Usuario> GetUsuarioByEmailAsync(string email)
         {
             return await _usuarioRepository.GetByEmailAsync(email);

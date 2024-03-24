@@ -1,4 +1,5 @@
 ﻿using Havira.Tarefas.Application.DTOs.Requests.Todos;
+using Havira.Tarefas.Application.DTOs.Responses;
 using Havira.Tarefas.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,8 @@ namespace Havira.Tarefas.Application.Interfaces
     public interface ITodoService
     {
         Task<Todo> CreateTodoAsync(TodoCreateDto todoDto, Guid userId);
-        Task<IEnumerable<Todo>> GetTodosByUserIdAsync(Guid userId);
-        Task<Todo> GetTodoByIdAsync(Guid id);
+        Task<IEnumerable<TodoReadDto>> GetTodosByUserIdAsync(Guid userId);
+        Task<TodoReadDto> GetTodoByIdAsync(Guid id);
         Task<bool> UpdateTodoAsync(Guid id, TodoUpdateDto todoDto);
         Task<bool> DeleteTodoAsync(Guid id);
     }

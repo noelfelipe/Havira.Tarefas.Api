@@ -1,4 +1,6 @@
-﻿using Havira.Tarefas.Application.DTOs.Requests.Todos;
+﻿using AutoMapper;
+using Havira.Tarefas.Application.DTOs.Requests.Todos;
+using Havira.Tarefas.Application.DTOs.Responses;
 using Havira.Tarefas.Application.Interfaces;
 using Havira.Tarefas.Domain.Entities;
 using Havira.Tarefas.Domain.Interfaces;
@@ -8,9 +10,11 @@ namespace Havira.Tarefas.Application.Services
     public class TodoService : ITodoService
     {
         private readonly ITodoRepository _todoRepository;
+        private readonly IMapper _mapper;
 
-        public TodoService(ITodoRepository todoRepository)
+        public TodoService(IMapper mapper,ITodoRepository todoRepository)
         {
+            _mapper = mapper;
             _todoRepository = todoRepository;
         }
 
@@ -29,14 +33,16 @@ namespace Havira.Tarefas.Application.Services
             return todo;
         }
 
-        public async Task<IEnumerable<Todo>> GetTodosByUserIdAsync(Guid userId)
+        public async Task<IEnumerable<TodoReadDto>> GetTodosByUserIdAsync(Guid userId)
         {
-            return await _todoRepository.GetByUserIdAsync(userId);
+            var todo = await _todoRepository.GetByUserIdAsync(userId);
+            return _mapper.Map<IEnumerable<TodoReadDto>>(todo);
         }
 
-        public async Task<Todo> GetTodoByIdAsync(Guid id)
+        public async Task<TodoReadDto> GetTodoByIdAsync(Guid id)
         {
-            return await _todoRepository.GetByIdAsync(id);
+            var todo = await _todoRepository.GetByIdAsync(id);
+            return _mapper.Map<TodoReadDto>(todo);
         }
 
         public async Task<bool> UpdateTodoAsync(Guid id, TodoUpdateDto todoDto)
