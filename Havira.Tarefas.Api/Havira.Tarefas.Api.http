@@ -1,0 +1,6 @@
+@Havira.Tarefas.Api_HostAddress = http://localhost:5104
+
+GET {{Havira.Tarefas.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

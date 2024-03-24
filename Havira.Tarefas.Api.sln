@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Havira.Tarefas.Api", "Havira.Tarefas.Api\Havira.Tarefas.Api.csproj", "{FEA832A6-1C19-4F04-9268-83CA22FFEE05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Havira.Tarefas.Application", "Havira.Tarefas.Application\Havira.Tarefas.Application.csproj", "{64E3D5B0-4B49-4EC9-8664-D938CE8825B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Havira.Tarefas.Domain", "Havira.Tarefas.Domain\Havira.Tarefas.Domain.csproj", "{C42A654B-0E73-4882-8750-1FBA29BD96EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Havira.Tarefas.Infrastructure", "Havira.Tarefas.Infrastructure\Havira.Tarefas.Infrastructure.csproj", "{B45264D6-D0F5-48A2-998E-5BF4899A84F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Havira.Tarefas.Tests", "Havira.Tarefas.Tests\Havira.Tarefas.Tests.csproj", "{8D41C7BE-4C7A-4869-B690-2DB523FA70D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FEA832A6-1C19-4F04-9268-83CA22FFEE05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEA832A6-1C19-4F04-9268-83CA22FFEE05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEA832A6-1C19-4F04-9268-83CA22FFEE05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEA832A6-1C19-4F04-9268-83CA22FFEE05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64E3D5B0-4B49-4EC9-8664-D938CE8825B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64E3D5B0-4B49-4EC9-8664-D938CE8825B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64E3D5B0-4B49-4EC9-8664-D938CE8825B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64E3D5B0-4B49-4EC9-8664-D938CE8825B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C42A654B-0E73-4882-8750-1FBA29BD96EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C42A654B-0E73-4882-8750-1FBA29BD96EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C42A654B-0E73-4882-8750-1FBA29BD96EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C42A654B-0E73-4882-8750-1FBA29BD96EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45264D6-D0F5-48A2-998E-5BF4899A84F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45264D6-D0F5-48A2-998E-5BF4899A84F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45264D6-D0F5-48A2-998E-5BF4899A84F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45264D6-D0F5-48A2-998E-5BF4899A84F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D41C7BE-4C7A-4869-B690-2DB523FA70D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D41C7BE-4C7A-4869-B690-2DB523FA70D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D41C7BE-4C7A-4869-B690-2DB523FA70D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D41C7BE-4C7A-4869-B690-2DB523FA70D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D93ED11A-7810-4C2E-9FE0-346A3E5264E6}
+	EndGlobalSection
+EndGlobal
