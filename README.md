@@ -30,6 +30,8 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 ### Passos
 
+###Recomendado a utilização de IDE Visual Studio
+
 1. Clone o repositório:
    ```
    git clone https://github.com/noelfelipe/Havira.Tarefas.Api.git
@@ -45,10 +47,7 @@ Para executar o projeto localmente, siga os passos abaixo:
 4. Configure a string de conexão no arquivo `appsettings.json` para apontar para o seu SQL Server.
 
 5. Aplique a criação de tabelas Script na pasta: 
-   ```
- Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate
-   ```
-
+   ``` Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate ```
 6. Execute a aplicação:
    ```
    dotnet run
@@ -58,19 +57,15 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 Após iniciar a aplicação, você pode usar as seguintes rotas para interagir com a API:
 
-- `POST /api/Usuarios/register`: registra um novo usuário.
-- `POST /api/Usuarios/login`: autentica um usuário.
+- `POST /api/Usuarios/register`: registrar um novo usuário.
+- `POST /api/Usuarios/login`: autenticar um usuário.
 
-### Para Utilização do endpoint abaixo é necessario um usuario registrado com os endpoint acima e utilizar o bearer token gerado no endpoint de login
+#### Para utilização dos endpoints abaixo é necessario um usuario registrado com os endpoint [registrar um novo usuário] e utilizar o bearer token gerado no endpoint [autenticar um usuário]
 
 - `POST /api/Todos`: cria uma nova tarefa.
 - `GET /api/Todos`: lista todas as tarefas do usuário autenticado.
 - `PUT /api/Todos/{id}`: atualiza uma tarefa existente.
 - `DELETE /api/Todos/{id}`: exclui uma tarefa.
-
-## Contribuições
-
-Contribuições são sempre bem-vindas! Para contribuir:
 
 ## Licença
 
