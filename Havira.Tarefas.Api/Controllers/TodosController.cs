@@ -1,4 +1,4 @@
-﻿using Havira.Tarefas.Application.DTOs.Todos;
+﻿using Havira.Tarefas.Application.DTOs.Requests.Todos;
 using Havira.Tarefas.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,68 +19,118 @@ namespace Havira.Tarefas.Api.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)] 
-        [ProducesResponseType(StatusCodes.Status400BadRequest)] 
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create(TodoCreateDto todoCreateDto)
         {
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (!Guid.TryParse(userIdString, out Guid userId))
+            try
             {
-                return BadRequest("Usuario Invalido");
-            }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            var todo = await _todoService.CreateTodoAsync(todoCreateDto, userId);
-            return CreatedAtAction(nameof(GetById), new { id = todo.Id }, todo);
+                var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (!Guid.TryParse(userIdString, out Guid userId))
+                {
+                    return BadRequest("Usuario Invalido");
+                }
+
+                var todo = await _todoService.CreateTodoAsync(todoCreateDto, userId);
+                return CreatedAtAction(nameof(GetById), new { id = todo.Id }, todo);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)] 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAll()
         {
-            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            if (!Guid.TryParse(userIdString, out Guid userId))
+            try
             {
-                return BadRequest("Usuario Invalido");
+                var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (!Guid.TryParse(userIdString, out Guid userId))
+                {
+                    return BadRequest("Usuario Invalido");
+                }
+
+                var todos = await _todoService.GetTodosByUserIdAsync(userId);
+
+                return Ok(todos);
             }
-
-            var todos = await _todoService.GetTodosByUserIdAsync(userId);
-
-            return Ok(todos);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)] 
-        [ProducesResponseType(StatusCodes.Status404NotFound)] 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(Guid id)
         {
-            var todo = await _todoService.GetTodoByIdAsync(id);
-            if (todo == null) return NotFound();
-            return Ok(todo);
+            try
+            {
+                var todo = await _todoService.GetTodoByIdAsync(id);
+                if (todo == null) return NotFound();
+                return Ok(todo);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)] 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateAsync(Guid id, TodoUpdateDto todoUpdateDto)
         {
-            var updated = await _todoService.UpdateTodoAsync(id, todoUpdateDto);
-            if (!updated) return NotFound();
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            return Ok();
+                var updated = await _todoService.UpdateTodoAsync(id, todoUpdateDto);
+                if (!updated) return NotFound();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)] 
-        [ProducesResponseType(StatusCodes.Status404NotFound)] 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(Guid id)
         {
-            var deleted = await _todoService.DeleteTodoAsync(id);
+            try
+            {
+                var deleted = await _todoService.DeleteTodoAsync(id);
 
-            if (!deleted) return NotFound();
+                if (!deleted) return NotFound();
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

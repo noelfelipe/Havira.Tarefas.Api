@@ -1,4 +1,4 @@
-﻿using Havira.Tarefas.Application.DTOs.Todos;
+﻿using Havira.Tarefas.Application.DTOs.Requests.Todos;
 using Havira.Tarefas.Domain.Entities;
 using System;
 using System.Collections.Generic;

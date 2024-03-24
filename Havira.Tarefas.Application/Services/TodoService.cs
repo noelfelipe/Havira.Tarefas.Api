@@ -1,4 +1,4 @@
-﻿using Havira.Tarefas.Application.DTOs.Todos;
+﻿using Havira.Tarefas.Application.DTOs.Requests.Todos;
 using Havira.Tarefas.Application.Interfaces;
 using Havira.Tarefas.Domain.Entities;
 using Havira.Tarefas.Domain.Interfaces;
@@ -8,12 +8,10 @@ namespace Havira.Tarefas.Application.Services
     public class TodoService : ITodoService
     {
         private readonly ITodoRepository _todoRepository;
-        private readonly IUsuarioRepository _usuarioRepository;
 
-        public TodoService(ITodoRepository todoRepository, IUsuarioRepository usuarioRepository)
+        public TodoService(ITodoRepository todoRepository)
         {
             _todoRepository = todoRepository;
-            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<Todo> CreateTodoAsync(TodoCreateDto todoDto, Guid userId)
@@ -46,8 +44,6 @@ namespace Havira.Tarefas.Application.Services
             var todo = await _todoRepository.GetByIdAsync(id);
             if (todo != null)
             {
-                todo.Title = todoDto.Title;
-                todo.Description = todoDto.Description;
                 todo.CompletionDate = todoDto.CompletionDate;
                 await _todoRepository.UpdateAsync(todo);
                 return true;

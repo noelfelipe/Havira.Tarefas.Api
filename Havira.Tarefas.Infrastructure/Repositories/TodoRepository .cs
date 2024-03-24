@@ -34,7 +34,7 @@ namespace Havira.Tarefas.Infrastructure.Repositories
 
         public async Task UpdateAsync(Todo todo)
         {
-            var sql = "UPDATE Todos SET Title = @Title, Description = @Description, CompletionDate = @CompletionDate WHERE Id = @Id";
+            var sql = "UPDATE Todos SET CompletionDate = @CompletionDate WHERE Id = @Id";
             await _connection.ExecuteAsync(sql, todo);
         }
 

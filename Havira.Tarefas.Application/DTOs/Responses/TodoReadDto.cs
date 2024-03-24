@@ -1,4 +1,4 @@
-﻿namespace Havira.Tarefas.Application.DTOs.Todos
+﻿namespace Havira.Tarefas.Application.DTOs.Responses
 {
     public class TodoReadDto
     {

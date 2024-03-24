@@ -1,4 +1,4 @@
-﻿using Havira.Tarefas.Application.DTOs.User;
+﻿using Havira.Tarefas.Application.DTOs.Requests.User;
 using Havira.Tarefas.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,10 +24,15 @@ namespace Havira.Tarefas.Api.Controllers
         [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Register(UsuarioCreateDto usuarioDto)
+        public async Task<IActionResult> Register(UserCreateDto usuarioDto)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var usuario = await _usuarioService.CreateUsuarioAsync(usuarioDto);
                 return CreatedAtAction(nameof(GetUsuarioById), new { id = usuario.Id }, usuario);
             }
@@ -42,24 +47,46 @@ namespace Havira.Tarefas.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetUsuarioById(Guid id)
         {
-            var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
-            if (usuario == null) return NotFound();
-            return Ok(usuario);
+            try
+            {
+                var usuario = await _usuarioService.GetUsuarioByIdAsync(id);
+                if (usuario == null) return NotFound();
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> Login(UserLoginDto userLogin)
         {
-            var usuario = await _usuarioService.GetUsuarioByEmailAsync(userLogin.Email);
-            if (usuario == null || !_usuarioService.VerifyPassword(userLogin.Password, usuario.Password))
+            try
             {
-                return Unauthorized("Credenciais inválidas.");
-            }
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            var token = _tokenService.GenerateToken(usuario);
-            return Ok(new { token });
+                var usuario = await _usuarioService.GetUsuarioByEmailAsync(userLogin.Email);
+
+                if (usuario == null || !_usuarioService.VerifyPassword(userLogin.Password, usuario.Password))
+                {
+                    return Unauthorized("Credenciais inválidas.");
+                }
+
+                var token = _tokenService.GenerateToken(usuario);
+                return Ok(new { token });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Havira.Tarefas.Domain.Entities;
 using Havira.Tarefas.Domain.Interfaces;
-using Havira.Tarefas.Application.DTOs.User;
 using Havira.Tarefas.Application.Interfaces;
 using System.Security.Claims;
 using System.Text;
+using Havira.Tarefas.Application.DTOs.Requests.User;
 
 namespace Havira.Tarefas.Application.Services
 {
@@ -16,7 +16,7 @@ namespace Havira.Tarefas.Application.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public async Task<Usuario> CreateUsuarioAsync(UsuarioCreateDto usuarioDto)
+        public async Task<Usuario> CreateUsuarioAsync(UserCreateDto usuarioDto)
         {
             var existingUser = await _usuarioRepository.GetByEmailAsync(usuarioDto.Email);
             if (existingUser != null)
@@ -46,28 +46,6 @@ namespace Havira.Tarefas.Application.Services
             return await _usuarioRepository.GetByEmailAsync(email);
         }
 
-        public async Task UpdateUsuarioAsync(Guid id, UsuarioUpdateDto usuarioDto)
-        {
-            var usuario = await _usuarioRepository.GetByIdAsync(id);
-            if (usuario == null)
-            {
-                throw new InvalidOperationException("Usuário não encontrado.");
-            }
-
-            usuario.Password = HashPassword(usuarioDto.Password);
-            await _usuarioRepository.UpdateAsync(usuario);
-        }
-
-        public async Task DeleteUsuarioAsync(Guid id)
-        {
-            var usuario = await _usuarioRepository.GetByIdAsync(id);
-            if (usuario == null)
-            {
-                throw new InvalidOperationException("Usuário não encontrado.");
-            }
-
-            await _usuarioRepository.DeleteAsync(usuario);
-        }
 
         private string HashPassword(string password)
         {
