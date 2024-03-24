@@ -5,7 +5,7 @@
 
 ## Recursos
 
-- CRUD de Usuario e autenticação de usuários
+- Registro e autenticação de usuários
 - CRUD para tarefas:
   - Criação de tarefas
   - Atualização de tarefas
