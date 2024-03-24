@@ -45,9 +45,8 @@ Para executar o projeto localmente, siga os passos abaixo:
 4. Configure a string de conexão no arquivo `appsettings.json` para apontar para o seu SQL Server.
 
 5. Aplique a criação de tabelas Script na pasta: 
-   ```
- Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate
-   ```
+   ``` Havira.Tarefas.Api\Havira.Tarefas.Infrastructure\TabelasCreate ```
+
 
 6. Execute a aplicação:
    ```
