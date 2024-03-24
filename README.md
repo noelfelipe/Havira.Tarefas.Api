@@ -57,6 +57,9 @@ Após iniciar a aplicação, você pode usar as seguintes rotas para interagir c
 
 - `POST /api/Usuarios/register`: registra um novo usuário.
 - `POST /api/Usuarios/login`: autentica um usuário.
+
+# Para Utilização do endpoint abaixo é necessario um usuario registrado com os endpoint acima e utilizar o bearer token gerado no endpoint de login
+
 - `POST /api/Todos`: cria uma nova tarefa.
 - `GET /api/Todos`: lista todas as tarefas do usuário autenticado.
 - `PUT /api/Todos/{id}`: atualiza uma tarefa existente.
