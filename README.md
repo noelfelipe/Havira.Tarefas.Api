@@ -57,19 +57,15 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 Após iniciar a aplicação, você pode usar as seguintes rotas para interagir com a API:
 
-- `POST /api/Usuarios/register`: registra um novo usuário.
-- `POST /api/Usuarios/login`: autentica um usuário.
+- `POST /api/Usuarios/register`: registrar um novo usuário.
+- `POST /api/Usuarios/login`: autenticar um usuário.
 
-### Para Utilização do endpoint abaixo é necessario um usuario registrado com os endpoint acima e utilizar o bearer token gerado no endpoint de login
+#### Para utilização dos endpoints abaixo é necessario um usuario registrado com os endpoint [registrar um novo usuário] e utilizar o bearer token gerado no endpoint [autenticar um usuário]
 
 - `POST /api/Todos`: cria uma nova tarefa.
 - `GET /api/Todos`: lista todas as tarefas do usuário autenticado.
 - `PUT /api/Todos/{id}`: atualiza uma tarefa existente.
 - `DELETE /api/Todos/{id}`: exclui uma tarefa.
-
-## Contribuições
-
-Contribuições são sempre bem-vindas! Para contribuir:
 
 ## Licença
 
