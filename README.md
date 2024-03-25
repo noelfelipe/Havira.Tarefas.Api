@@ -25,7 +25,7 @@ Para executar o projeto localmente, siga os passos abaixo:
 
 ### Pré-requisitos
 
-- .NET 6 SDK
+- .NET 8 SDK
 - SQL Server
 
 ### Passos
