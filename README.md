@@ -14,8 +14,8 @@
 
 ## Tecnologias Utilizadas
 
-- ASP.NET Core 6
-- Entity Framework Core
+- ASP.NET Core 8
+- Dapper
 - SQL Server
 - JWT para autenticação
 
